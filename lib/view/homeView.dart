@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../MyStatefulDialog.dart';
 import '../getXController/NewsController.dart';
 
 class HomeView extends StatelessWidget {
   HomeView({super.key});
 
   final NewsController _newsController = Get.put(NewsController());
+
+  Future<dynamic> showStatefulWidgetDialog(BuildContext context) async {
+    await showDialog<void>(
+      context: context,
+      builder: (_) {
+        return MyStatefulDialog();
+      },
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +63,7 @@ class HomeView extends StatelessWidget {
                           ),
                           GestureDetector(
                             onTap: (){
-
+                              showStatefulWidgetDialog(context);
                             },
                             child: Container(
                               padding: const EdgeInsets.only(right: 10),
